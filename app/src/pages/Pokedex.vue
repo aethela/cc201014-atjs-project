@@ -32,10 +32,19 @@ export default {
 
 <template>
 
-    <div>
-        <h1>Pokedex</h1>
+    <div class="text-center">
+        <h1 class="py-4">Pokedex</h1>
 
-        <div v-for="(item, index) in list" :key="index">
+    <div class="justify-center flex flex-wrap gap-x-8 gap-y-8">
+        <div 
+        v-for="(item, index) in list" :key="index" 
+        class="
+        px-4 py-2 
+        bg-gray-100 
+        rounded-xl 
+        transition duration-500 ease-in-out 
+        transform hover:-translate-y-1 hover:scale-110 
+        hover:shadow-xl hover:bg-blue-200">
             <div>
                 <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ 
                     index + 1 
@@ -45,6 +54,7 @@ export default {
             </div>
 
         </div>
+    </div>
 
         <!-- {{ list }} -->
     </div>

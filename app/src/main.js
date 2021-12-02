@@ -4,6 +4,7 @@ import Home from './pages/Home.vue';
 import Pokedex from './pages/Pokedex.vue';
 import Guesser from './pages/Guesser.vue';
 import { createStore } from 'vuex';
+import './assets/index.css';
 
 // Create a new store instance.
 const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/';
