@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import Pokedex from './pages/Pokedex.vue';
 import Guesser from './pages/Guesser.vue';
+import Memory from './pages/Memory.vue';
 import { createStore } from 'vuex';
 import './assets/index.css';
 
@@ -115,6 +116,7 @@ const router = createRouter({
     { path: '/', component: Home },
     { path: '/pokedex', component: Pokedex },
     { path: '/guesser', component: Guesser },
+    { path: '/memory', component: Memory },
   ],
 });
 

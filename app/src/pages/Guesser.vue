@@ -28,6 +28,7 @@ export default {
 
     <div class="flex">
       <button @click="setNextGuess('red')">Guess Red 🟥</button>
+      <br/><br/>
       <button @click="setNextGuess('black')">Guess Black 🖤</button>
     </div>
 
