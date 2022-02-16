@@ -1,5 +1,25 @@
+// Project extension: memory card game to practice Composition API
+
 <script>
+import MemoryCard from '../components/MemoryCard.vue'
 export default {
+    components: {
+        MemoryCard
+    },
+
+    setup() {
+        const cardList = [];
+
+        for (let i = 0; i < 16; i++) {
+            cardList.push(i)
+        }
+
+        // return everything that should be passed to component
+        return {
+            cardList
+        }
+    }
+
 
 }
 
@@ -11,22 +31,10 @@ export default {
         <h2>Let's play Pokémon memory!</h2>
 
         <section class="game-board">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
+            <memory-card 
+            v-for="(card, index) in cardList" 
+            :key="`card-${index}`"
+            :value="card"/>
         </section>
 
 
