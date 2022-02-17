@@ -33,7 +33,7 @@ export default {
 <template>
 
     <div class="text-center">
-        <h1 class="py-4">Pokedex</h1>
+        <h1 class="py-4 mt-12">Pokedex</h1>
 
     <div class="justify-center flex flex-wrap gap-x-8 gap-y-8">
         <div 

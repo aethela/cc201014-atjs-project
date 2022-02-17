@@ -8,18 +8,25 @@
   </head>
   <body>
     <div id="app">
-      <router-link to="/">Go to Home</router-link>
-      <br/>
-      <router-link to="/pokedex">Go to Pokedex</router-link>
-      <br/>
-      <router-link to="/guesser">Go to Guesser</router-link>
-      <br/>
-      <router-link to="/memory">Go to Memory Card Game</router-link>
-      <br/>
-      <router-link to="/calculator">Go to Calculator</router-link>
-
-
-      <router-view />
+      <ul id="nav" class="mt-8 mb-24">
+        <router-link tag="li" 
+        class="nav-item 
+        mr-4 text-center border border-white rounded hover:border-blue-200 text-blue-500 hover:bg-blue-200 py-2 px-4" 
+        to="/">Home</router-link>
+        <router-link tag="li" class="nav-item
+        mr-4 text-center border border-white rounded hover:border-blue-200 text-blue-500 hover:bg-blue-200 py-2 px-4" 
+        to="/pokedex">Pokedex</router-link>
+        <router-link tag="li" class="nav-item
+        mr-4 text-center border border-white rounded hover:border-blue-200 text-blue-500 hover:bg-blue-200 py-2 px-4" 
+        to="/guesser">Guesser</router-link>
+        <router-link tag="li" class="nav-item
+        mr-4 text-center border border-white rounded hover:border-blue-200 text-blue-500 hover:bg-blue-200 py-2 px-4" 
+        to="/memory">Memory Card Game</router-link>
+        <router-link tag="li" class="nav-item
+        mr-4 text-center border border-white rounded hover:border-blue-200 text-blue-500 hover:bg-blue-200 py-2 px-4" 
+        to="/calculator">Calculator</router-link>
+        <router-view />
+      </ul>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <h1>The great guesser game!</h1>
+  <h1 class="mt-12">The great guesser game!</h1>
 
   <button @click="getDeck">Get a new Deck</button>
 

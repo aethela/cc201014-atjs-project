@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="">Calculator</h1>
+    <h1 class="mt-12">Calculator</h1>
 
     <div id="output-fields">
         <div>

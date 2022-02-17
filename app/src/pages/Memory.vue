@@ -187,7 +187,7 @@ export default {
 
 <template>
 
-        <h1 class="py-4">Pokémon Memory</h1>
+        <h1 class="py-4 mt-12">Pokémon Memory</h1>
         <h2>Gotta catch 'em all!</h2>
 
         <!-- use vue's animation API to animate shuffling the cards -->
