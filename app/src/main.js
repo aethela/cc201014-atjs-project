@@ -6,6 +6,7 @@ import Guesser from './pages/Guesser.vue';
 import Memory from './pages/Memory.vue';
 import { createStore } from 'vuex';
 import './assets/index.css';
+import router from './lib/router.js';
 
 // Create a new store instance.
 const API = 'https://deckofcardsapi.com/api/deck/new/shuffle/';
@@ -110,15 +111,16 @@ const store = createStore({
 
 // Here we create our own Vue Router Instance
 // and define the paths we can then use.
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    { path: '/', component: Home },
-    { path: '/pokedex', component: Pokedex },
-    { path: '/guesser', component: Guesser },
-    { path: '/memory', component: Memory },
-  ],
-});
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes: [
+//     { path: '/', component: Home },
+//     { path: '/pokedex', component: Pokedex },
+//     { path: '/guesser', component: Guesser },
+//     { path: '/memory', component: Memory },
+//     { path: '/calculator', component: Calculator },
+//   ],
+// });
 
 const app = createApp({});
 app.use(router);

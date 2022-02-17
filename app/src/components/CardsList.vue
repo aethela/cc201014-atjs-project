@@ -3,7 +3,7 @@
     <Card
       v-for="card in cards"
       :card="card"
-      :key="`${card.value}-${card.symbold}`"
+      :key="`${card.value}-${card.symbol}`"
     />
   </div>
 </template>
