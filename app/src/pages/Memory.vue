@@ -2,6 +2,7 @@
 // Reference material:  
 // https://learnvue.co/2020/12/how-to-use-lifecycle-hooks-in-vue3/ (13 Feb 2022)
 // https://www.youtube.com/watch?v=WQa9-4K3me4 (15 Feb 2022)
+// https://tailwindcss.com/docs/ (17 Feb 2022)
 // https://www.freecodecamp.org/news/how-to-build-a-memory-card-game-with-vuejs/ (14 Feb 2022)
 
 <script>
@@ -19,12 +20,11 @@ export default {
         const cardList = ref([]);
         const userSelection = ref([]);
 
-
         const status = computed(() => {
             if(cardPairsLeft.value === 0) {
                 return 'You won!'
             } else {
-                return `Remaining Pairs: ${cardPairsLeft.value}`
+                return `You've found ${8 - cardPairsLeft.value} out of 8 pairs.`
             }
         }) 
 
@@ -178,15 +178,11 @@ export default {
             createDeck
         }
     }
-
-
 }
-
 </script>
 
 
 <template>
-
         <h1 class="py-4 mt-12">Pokémon Memory</h1>
         <h2>Gotta catch 'em all!</h2>
 
@@ -219,12 +215,10 @@ export default {
         @click="restartGame">
         Restart Game
         </button>
-
 </template>
 
 
 <style>
-
     .game-board {
         display: grid;
         grid-template-columns: 130px 130px 130px 130px;
@@ -238,5 +232,4 @@ export default {
     .shuffle-card-move {
         transition: transform 0.8s ease-in;
     }
-
 </style>

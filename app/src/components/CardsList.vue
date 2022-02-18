@@ -1,6 +1,7 @@
 <template>
-  <div class="flex">
+  <div class="flex justify-center mt-8 flex-wrap">
     <Card
+      class="mr-2 mt-4"
       v-for="card in cards"
       :card="card"
       :key="`${card.value}-${card.symbol}`"

@@ -1,6 +1,6 @@
 <template>
-  <h1>Guesses: {{ guesses }}</h1>
-  <h1>Points: {{ points }}</h1>
+  <h2 class="text-2xl mt-12">Guesses: {{ guesses }}</h2>
+  <h2 class="text-2xl">Points: {{ points }}</h2>
 </template>
 
 <script>

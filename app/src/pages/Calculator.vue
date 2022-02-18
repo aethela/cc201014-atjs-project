@@ -2,14 +2,14 @@
   <div>
     <h1 class="mt-12">Calculator</h1>
 
-    <div id="output-fields">
+    <div id="output-fields" class="mt-8">
         <div>
-        <strong>Calculation</strong>
+        <strong class="text-2xl">Calculation:</strong>
         <p class="display-calculation">{{ lastNumber }} {{ operation }} {{ currentNumber }}</p>
         </div>
 
         <div>
-        <strong>Result</strong>
+        <strong class="text-2xl">Result:</strong>
         <p class="display-result">{{ result }} </p>
         </div>
     </div>
@@ -73,11 +73,11 @@ const numberKeys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 export default {
   data() {
     return {
-      lastNumber: 0,
+      lastNumber: null,
       currentNumberArray: [],
       numberKeys,
       operation: '',
-      result: 0
+      result: null
     };
   },
 
@@ -85,7 +85,7 @@ export default {
         currentNumber() {
             // We turn the array into a number so we don't need to convert
             // any other istance of the currentNumber
-            return parseInt(this.currentNumberArray.join(""), 10) || 0;
+            return parseInt(this.currentNumberArray.join(""), 10) || null;
         },
   },
 
@@ -125,16 +125,17 @@ export default {
         } else if (this.operation === '/') {
             this.result = this.lastNumber / this.currentNumber;
         } else {
-            this.result = 0;
+            this.result = 'error';
         }
 
-        this.currentNumberArray = [...String(this.result)];
+        //this.currentNumberArray = [...String(this.result)];
     },
 
     clearOutput() {
-        this.lastNumber = 0;
+        this.lastNumber = null;
         this.currentNumberArray = [];
-        this.result = 0;
+        this.result = null;
+        this.operation = ''
     },
 
     // concatOutput() {
