@@ -1,33 +1,38 @@
-// Project extension: memory card game to practice Composition API
+// Project extension: memory card game to review Composition API
 // Reference material:  
 // https://learnvue.co/2020/12/how-to-use-lifecycle-hooks-in-vue3/ (13 Feb 2022)
 // https://www.youtube.com/watch?v=WQa9-4K3me4 (15 Feb 2022)
 // https://tailwindcss.com/docs/ (17 Feb 2022)
 // https://www.freecodecamp.org/news/how-to-build-a-memory-card-game-with-vuejs/ (14 Feb 2022)
+// https://vuejs.org/api/options-lifecycle.html (18 Feb 2022)
 
 <script>
 import _ from 'lodash'
 import { ref, watch, computed } from 'vue' // required import to make components reactive
 import MemoryCard from '../components/MemoryCard.vue'
-import { launchConfetti } from '../lib/confetti.js'
 export default {
     components: {
         MemoryCard
     },
 
      setup() {
-        // declare card list as a reactive component
+        // declare card list as a reactive variable
         const cardList = ref([]);
         const userSelection = ref([]);
+        let numberOfTurns = 0;
 
         const status = computed(() => {
             if(cardPairsLeft.value === 0) {
-                return 'You won!'
+                return `You won! Total number of turns: ${numberOfTurns}`
             } else {
-                return `You've found ${8 - cardPairsLeft.value} out of 8 pairs.`
+                return `You've found ${8 - cardPairsLeft.value} out of 8 pairs in ${numberOfTurns} turns.`
             }
         }) 
 
+        // 1. filter cardlist for matched value being false 
+        // (i.e. cards that have not been matched with an identical one yet)
+        // 2. get the total number of unmatched cards
+        // 3. divide by 2 to get number of pairs left & return value
         const cardPairsLeft = computed(() => {
             const cardsLeft = cardList.value.filter(
                 card => card.matched === false
@@ -38,7 +43,7 @@ export default {
 
         // shuffle deck and reassign positions of cards
         const restartGame = () => {
-            
+            numberOfTurns = 0;
             cardList.value = _.shuffle(cardList.value);
             console.log(cardList.value);
             cardList.value = cardList.value.map((card, index) => {
@@ -122,7 +127,7 @@ export default {
 
             // save selected card's payload to the userSelection array
             if (userSelection.value[0]) { // if a card is already selected
-                
+                // prevent user from matching a card with itself
                 if(userSelection.value[0].position === payload.position &&
                 userSelection.value[0].faceValue === payload.faceValue) 
                 {
@@ -137,11 +142,11 @@ export default {
         }
 
         // watch for remaining pairs in case of win
-        watch(cardPairsLeft, currentValue => {
-            if(currentValue === 0) {
-                launchConfetti();
-            }
-        })
+        // watch(cardPairsLeft, (currentValue) => {
+        //     if(currentValue === 0) {
+        //         gamesWon++;
+        //     }
+        // })
 
         watch(userSelection, (currentValue) => {
             if (currentValue.length === 2) {
@@ -162,7 +167,8 @@ export default {
                         cardList.value[card2.position].visible = false
                     }, 1500)
                 }
-
+                numberOfTurns++;
+                console.log('turns in watch userselection: ' + numberOfTurns);
                 userSelection.value.length = 0;
             } 
         }, { deep: true }) // track deep value inside of selection array
@@ -175,7 +181,7 @@ export default {
             status,
             cardPairsLeft,
             restartGame,
-            createDeck
+            createDeck,
         }
     }
 }
@@ -184,7 +190,7 @@ export default {
 
 <template>
         <h1 class="py-4 mt-12">Pokémon Memory</h1>
-        <h2>Gotta catch 'em all!</h2>
+        <h2 class="font-bold text-xl">Gotta catch 'em all!</h2>
 
         <!-- use vue's animation API to animate shuffling the cards -->
         <transition-group tag="section" class="game-board" name="shuffle-card"> 
